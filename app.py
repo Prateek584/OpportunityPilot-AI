@@ -63,15 +63,29 @@ with st.sidebar:
 
 # ---------------- HERO ---------------- #
 
-st.markdown(
-"""
+hero1, hero2 = st.columns([1.2,1])
+
+with hero1:
+
+    st.markdown("""
 # 🚀 OpportunityPilot AI
 
-### AI-Powered Career Intelligence Platform
+## Your AI-Powered Career Intelligence Platform
 
-Discover internships, hackathons, scholarships and build a career roadmap using AI.
+Discover internships, hackathons, scholarships,
+AI recommendations and personalized career roadmaps.
 
+⭐⭐⭐⭐⭐ Trusted by students
 """)
+
+    st.button("🚀 Start Career Journey")
+
+with hero2:
+
+    st.image(
+        "assets/hero_dashboard.png",
+        use_container_width=True
+    )
 
 st.divider()
 
@@ -80,63 +94,105 @@ st.divider()
 m1, m2, m3, m4 = st.columns(4)
 
 with m1:
-    st.metric(
-        "AI Agents",
-        "3"
-    )
+    st.metric("🤖 AI Agents","3")
 
 with m2:
-    st.metric(
-        "Reports",
-        "Unlimited"
-    )
+    st.metric("📄 Reports","Unlimited")
 
 with m3:
-    st.metric(
-        "Response",
-        "<5 sec"
-    )
+    st.metric("⚡ Response","<5 sec")
 
 with m4:
-    st.metric(
-        "Career Ready",
-        "100%"
-    )
+    st.metric("🎯 AI Powered","100%")
 
 st.divider()
 
 # ---------------- PROFILE ---------------- #
 
+st.subheader("👤 Tell AI About Yourself")
+
+st.caption(
+"Provide as much information as possible for more accurate recommendations."
+)
+
 st.subheader("👤 Student Profile")
 
-profile = st.text_area(
-    "",
-    height=220,
-    placeholder="""
-Name: Prateek Gautam
+col1, col2 = st.columns(2)
 
-Degree: B.Tech CSE (AI & ML)
+with col1:
+    name = st.text_input("Full Name")
+    degree = st.selectbox(
+        "Degree",
+        [
+            "B.Tech CSE",
+            "B.Tech CSE (AI & ML)",
+            "BCA",
+            "MCA"
+        ]
+    )
 
-Year: 2nd Year
+    cgpa = st.number_input(
+        "CGPA",
+        min_value=0.0,
+        max_value=10.0,
+        value=7.5
+    )
 
+with col2:
+    year = st.selectbox(
+        "Current Year",
+        [
+            "1st Year",
+            "2nd Year",
+            "3rd Year",
+            "4th Year"
+        ]
+    )
+
+    goal = st.selectbox(
+        "Career Goal",
+        [
+            "Software Engineer",
+            "AI Engineer",
+            "Machine Learning Engineer",
+            "Data Scientist",
+            "Web Developer"
+        ]
+    )
+
+skills = st.text_area(
+    "Skills",
+    placeholder="Python, Java, HTML, CSS, JavaScript, SQL..."
+)
+
+interests = st.text_input(
+    "Interests",
+    placeholder="Artificial Intelligence, Web Development, Data Science..."
+)
+
+resume = st.file_uploader(
+    "Upload Resume (Optional)",
+    type=["pdf", "docx"]
+)
+
+profile = f"""
+Name: {name}
+Degree: {degree}
+CGPA: {cgpa}
+Year: {year}
 Skills:
-Python
-Java
-HTML
-CSS
-JavaScript
-GitHub
+{skills}
 
 Interests:
-Artificial Intelligence
-Machine Learning
-Web Development
-Open Source
+{interests}
 
 Career Goal:
-Software Development Internship
+{goal}
+
+Resume Uploaded:
+{"Yes" if resume else "No"}
 """
-)
+
 
 # ---------------- FEATURE CARDS ---------------- #
 
@@ -145,51 +201,47 @@ c1, c2, c3 = st.columns(3)
 with c1:
     st.info(
         """
-### 🔍 Opportunity Scout
+### 🚀 Find Opportunities
 
-Find
+✔ Internships
 
-• Internships
+✔ Hackathons
 
-• Hackathons
+✔ Scholarships
 
-• Scholarships
+✔ Open Source
 
-• Campus Ambassador Programs
+✔ Campus Ambassador Programs
 """
     )
 
 with c2:
     st.success(
         """
-### ✅ Eligibility Analyzer
+### 🧠 AI Eligibility
 
-Check
+✔ Profile Analysis
 
-• Eligibility
+✔ Skill Gap
 
-• Missing Skills
+✔ Career Score
 
-• Readiness
-
-• Recommendations
+✔ Improvement Tips
 """
     )
 
 with c3:
     st.warning(
         """
-### 📈 Career Roadmap
+### 🗺 AI Career Roadmap
 
-Generate
+✔ 3-Month Learning Plan
 
-• 3 Month Plan
+✔ Weekly Goals
 
-• Learning Path
+✔ Recommended Projects
 
-• Project Ideas
-
-• Career Goals
+✔ Career Milestones
 """
     )
 
