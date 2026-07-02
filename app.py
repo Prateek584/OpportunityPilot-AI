@@ -63,7 +63,7 @@ with st.sidebar:
 
 # ---------------- HERO ---------------- #
 
-hero1, hero2 = st.columns([1.2,1])
+hero1, hero2 = st.columns([3,2])
 
 with hero1:
 
